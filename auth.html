@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PVI — Masuk / Daftar</title>
+<!-- ===== Google Fonts: Roboto ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1a1a1a">
+<link rel="apple-touch-icon" href="img/icon-192.png">
+<!-- ================= CSS ================= -->
+<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+<!-- ============================================= -->
+<!-- NAVBAR                                         -->
+<!-- ============================================= -->
+<div class="navbar">
+  <div class="navbar-left" onclick="window.location.href='home.html'">
+    <div class="navbar-logo">PVI</div>
+    <div class="navbar-name">Prime Value Investor</div>
+  </div>
+  <div class="menu-btn" onclick="openMenu()">
+  <span></span><span></span><span></span>
+</div>
+</div>
+<!-- ============================================= -->
+<!-- PAGE: AUTH                                     -->
+<!-- ============================================= -->
+<div class="page-view active" id="page-auth">
+  <div class="auth-page">
+
+    <!-- ============ KARTU MASUK ============ -->
+    <div class="auth-card active" id="cardSignin">
+      <div class="auth-brand">
+        <div class="auth-brand-name">Prime Value Investor</div>
+        <div class="auth-brand-tagline">Platform Analisis &amp; Valuasi Saham Indonesia</div>
+      </div>
+
+      <form onsubmit="handleSignin(event)">
+        <div class="auth-field">
+          <label class="auth-label">Email atau Username</label>
+          <input type="email" class="auth-input" id="signinEmail" placeholder="nama@email.com atau username" required>
+        </div>
+
+        <div class="auth-field">
+          <label class="auth-label">Password</label>
+          <div class="auth-input-wrap">
+            <input type="password" class="auth-input" id="signinPassword" placeholder="••••••••" required>
+            <button type="button" class="auth-show" onclick="toggleShow('signinPassword', this)">Show</button>
+          </div>
+        </div>
+
+       <div class="auth-forgot">
+  <a href="lupa-password.html">Lupa Password?</a>
+</div>
+
+        <button type="submit" class="auth-submit">Masuk</button>
+        <div class="auth-msg" id="signinMsg"></div>
+      </form>
+
+      <div class="auth-switch">
+        Belum punya akun?
+        <a href="#" onclick="switchAuthCard('signup'); return false;">Daftar sekarang</a>
+      </div>
+    </div>
+
+    <!-- ============ KARTU DAFTAR ============ -->
+    <div class="auth-card" id="cardSignup">
+      <div class="auth-brand">
+        <div class="auth-brand-name">Prime Value Investor</div>
+        <div class="auth-brand-tagline">Buat akun untuk mulai analisis saham</div>
+      </div>
+
+      <form onsubmit="handleSignup(event)">
+        <div class="auth-field">
+          <label class="auth-label">Nama Lengkap</label>
+          <input type="text" class="auth-input" id="signupName" placeholder="Nama lengkap Anda" required>
+        </div>
+
+        <div class="auth-field">
+          <label class="auth-label">Email</label>
+          <input type="email" class="auth-input" id="signupEmail" placeholder="nama@email.com" required>
+        </div>
+
+        <div class="auth-field">
+          <label class="auth-label">Nomor WhatsApp</label>
+          <input type="tel" class="auth-input" id="signupPhone" placeholder="08123456789" required>
+        </div>
+
+        <div class="auth-field">
+          <label class="auth-label">Password</label>
+          <div class="auth-input-wrap">
+            <input type="password" class="auth-input" id="signupPassword" placeholder="Minimal 6 karakter" required minlength="6">
+            <button type="button" class="auth-show" onclick="toggleShow('signupPassword', this)">Show</button>
+          </div>
+        </div>
+
+        <div class="auth-field">
+          <label class="auth-label">Konfirmasi Password</label>
+          <div class="auth-input-wrap">
+            <input type="password" class="auth-input" id="signupPassword2" placeholder="Ulangi password" required minlength="6">
+            <button type="button" class="auth-show" onclick="toggleShow('signupPassword2', this)">Show</button>
+          </div>
+        </div>
+
+        <div class="auth-check">
+  <input type="checkbox" id="signupAgree" required>
+  <label for="signupAgree">
+    Saya setuju dengan
+    <a href="#" onclick="openModal('modalSyarat'); return false;">Syarat & Ketentuan</a>
+    dan
+    <a href="#" onclick="openModal('modalPrivasi'); return false;">Kebijakan Privasi</a>
+  </label>
+</div>
+
+        <button type="submit" class="auth-submit">Daftar Akun</button>
+        <div class="auth-msg" id="signupMsg"></div>
+      </form>
+
+      <div class="auth-switch">
+        Sudah punya akun?
+        <a href="#" onclick="switchAuthCard('signin'); return false;">Masuk</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- MENU OVERLAY                                   -->
+<!-- ============================================= -->
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-header">
+    <div class="menu-header-left">
+      <div class="menu-header-logo">PVI</div>
+      <div class="menu-header-name">Prime Value Investor</div>
+    </div>
+    <div class="close-btn" onclick="closeMenu()">
+      <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+      </svg>
+    </div>
+  </div>
+
+  <div class="menu-list">
+    <div class="menu-item">
+      <div class="menu-item-title" onclick="window.location.href='home.html'">HOME</div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-title" onclick="toggleSubmenu(this)">
+        KALKULATOR
+        <span class="arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </div>
+      <div class="submenu">
+        <div class="submenu-item" onclick="window.location.href='harga-wajar.html'">Kalkulator Harga Wajar</div>
+        <div class="submenu-item" onclick="window.location.href='average.html'">Kalkulator Average</div>
+        <div class="submenu-item" onclick="window.location.href='right-issue.html'">Kalkulator Right Issue</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-title" onclick="window.location.href='portofolio.html'">PORTOFOLIO</div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-title" onclick="window.location.href='tentang.html'">TENTANG</div>
+    </div>
+    <div id="menuUserSlot"></div>
+  </div>
+</div>
+
+  <!-- ============================================= -->
+<!-- MODAL: SYARAT & KETENTUAN                       -->
+<!-- ============================================= -->
+<div class="modal-overlay" id="modalSyarat">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">Syarat &amp; Ketentuan</div>
+      <button class="modal-close" onclick="closeModal('modalSyarat')">✕</button>
+    </div>
+    <div class="modal-body">
+      <h4>1. Penerimaan Syarat</h4>
+      <p>Dengan mendaftar dan menggunakan layanan Prime Value Investor ("PVI"), Anda dianggap telah membaca, memahami, dan menyetujui seluruh syarat dan ketentuan yang berlaku.</p>
+
+      <h4>2. Layanan</h4>
+      <p>PVI menyediakan alat bantu analisis dan kalkulator valuasi saham. Semua informasi yang disajikan bersifat edukatif dan <strong>bukan merupakan rekomendasi jual/beli</strong>.</p>
+
+      <h4>3. Akun Pengguna</h4>
+      <p>Anda bertanggung jawab menjaga kerahasiaan akun dan password. Segala aktivitas yang terjadi pada akun Anda menjadi tanggung jawab Anda.</p>
+
+      <h4>4. Batasan Tanggung Jawab</h4>
+      <p>Segala keputusan investasi yang Anda ambil sepenuhnya merupakan tanggung jawab pribadi. PVI tidak bertanggung jawab atas kerugian yang timbul akibat penggunaan layanan.</p>
+
+      <h4>5. Perubahan Ketentuan</h4>
+      <p>PVI berhak mengubah syarat dan ketentuan ini sewaktu-waktu. Perubahan akan diinformasikan melalui halaman ini.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-btn" onclick="closeModal('modalSyarat')">Tutup</button>
+      <button class="modal-btn primary" onclick="agreeAndClose('modalSyarat')">Saya Setuju</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- MODAL: KEBIJAKAN PRIVASI                        -->
+<!-- ============================================= -->
+<div class="modal-overlay" id="modalPrivasi">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">Kebijakan Privasi</div>
+      <button class="modal-close" onclick="closeModal('modalPrivasi')">✕</button>
+    </div>
+    <div class="modal-body">
+      <h4>1. Data yang Kami Kumpulkan</h4>
+      <p>Kami mengumpulkan data nama, email, nomor telepon, dan informasi lain yang Anda berikan saat mendaftar.</p>
+
+      <h4>2. Penggunaan Data</h4>
+      <p>Data Anda digunakan untuk keperluan autentikasi akun, komunikasi terkait layanan, dan peningkatan kualitas layanan PVI.</p>
+
+      <h4>3. Penyimpanan &amp; Keamanan</h4>
+      <p>Data Anda disimpan dengan standar keamanan yang wajar. Kami tidak menjual atau membagikan data Anda kepada pihak ketiga tanpa izin.</p>
+
+      <h4>4. Cookie &amp; Teknologi Serupa</h4>
+      <p>Kami dapat menggunakan cookie untuk meningkatkan pengalaman penggunaan situs. Anda dapat menonaktifkan cookie di pengaturan browser.</p>
+
+      <h4>5. Hak Pengguna</h4>
+      <p>Anda berhak meminta penghapusan akun dan data pribadi Anda kapan saja dengan menghubungi kami.</p>
+
+      <h4>6. Kontak</h4>
+      <p>Untuk pertanyaan terkait privasi, hubungi kami di <strong>privacy@pvi.id</strong>.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-btn" onclick="closeModal('modalPrivasi')">Tutup</button>
+      <button class="modal-btn primary" onclick="agreeAndClose('modalPrivasi')">Saya Setuju</button>
+    </div>
+  </div>
+</div>
+<script src="js/global.js"></script>
+<script src="js/auth.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .then(() => console.log('Service Worker terdaftar'))
+      .catch((err) => console.log('SW gagal:', err));
+  }
+</script>
+</body>
+</html>

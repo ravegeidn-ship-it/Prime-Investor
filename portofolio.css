@@ -1,0 +1,138 @@
+/* ============================================= */
+/* PORTOFOLIO                                    */
+/* ============================================= */
+.porto-header-card {
+  background: linear-gradient(135deg, #1a1a1a 0%, #1a1a1a 100%);
+  color: #fff;
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 20px;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(10,26,79,0.25);
+}
+.porto-label {
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0.8;
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+}
+.porto-value {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
+}
+.porto-sub {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-bottom: 12px;
+}
+.porto-pnl-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+.porto-pnl-badge.up { background: #10b981; color: #fff; }
+.porto-pnl-badge.down { background: #ef4444; color: #fff; }
+.porto-pnl-badge.flat { background: rgba(255,255,255,0.2); color: #fff; }
+
+.porto-chart-wrapper {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+}
+.porto-chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.porto-chart-header h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+}
+.porto-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #059669;
+  letter-spacing: 0.5px;
+}
+.porto-live-dot {
+  width: 8px;
+  height: 8px;
+  background: #059669;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.porto-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+.porto-info-row:last-child { border-bottom: none; }
+.porto-info-label {
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 500;
+}
+.porto-info-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  font-variant-numeric: tabular-nums;
+}
+.porto-info-value.up { color: #059669; }
+.porto-info-value.down { color: #dc2626; }
+
+.porto-chart-wrapper .tradingview-widget-container {
+  flex: 1;
+  height: auto !important;
+}
+.porto-chart-wrapper .tradingview-widget-container__widget {
+  height: 100% !important;
+}
+
+/* Method card dipakai di halaman portofolio */
+.method-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  transition: box-shadow 0.2s;
+}
+.method-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+.method-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #2563eb;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f3f4f6;
+}
