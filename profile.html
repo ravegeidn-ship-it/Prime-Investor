@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIH — Profile</title>
+<!-- ===== Google Fonts: Roboto ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1a1a1a">
+<link rel="apple-touch-icon" href="img/icon-192.png">
+<!-- ================= CSS ================= -->
+<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+<!-- ============================================= -->
+<!-- NAVBAR                                         -->
+<!-- ============================================= -->
+<div class="navbar">
+  <div class="navbar-left" onclick="window.location.href='home.html'">
+    <div class="navbar-logo">AIH</div>
+    <div class="navbar-name">Prime Value Investor</div>
+  </div>
+  <div class="menu-btn" onclick="openMenu()">
+  <span></span><span></span><span></span>
+</div>
+</div>
+<!-- ============================================= -->
+<!-- PAGE: PROFILE (setelah login)                  -->
+<!-- ============================================= -->
+<div class="page-view active" id="page-profile">
+  <div class="container">
+    <div class="profile-card">
+      <div class="profile-avatar" id="profileAvatar">A</div>
+      <div class="profile-name" id="profileName">—</div>
+      <div class="profile-email" id="profileEmail">—</div>
+      <div class="profile-actions">
+        <button class="profile-btn primary" onclick="window.location.href='portofolio.html'">Portofolio</button>
+        <button class="profile-btn danger" onclick="handleLogout()">Logout</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- MENU OVERLAY                                   -->
+<!-- ============================================= -->
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-header">
+    <div class="menu-header-left">
+      <div class="menu-header-logo">PVI</div>
+      <div class="menu-header-name">Prime Value Investor</div>
+    </div>
+    <div class="close-btn" onclick="closeMenu()">
+      <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+      </svg>
+    </div>
+  </div>
+
+  <div class="menu-list">
+    <div class="menu-item">
+      <div class="menu-item-title" onclick="window.location.href='home.html'">HOME</div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-title" onclick="toggleSubmenu(this)">
+        KALKULATOR
+        <span class="arrow">▼</span>
+      </div>
+      <div class="submenu">
+        <div class="submenu-item" onclick="window.location.href='harga-wajar.html'">Kalkulator Harga Wajar</div>
+        <div class="submenu-item" onclick="window.location.href='average.html'">Kalkulator Average</div>
+        <div class="submenu-item" onclick="window.location.href='right-issue.html'">Kalkulator Right Issue</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-title" onclick="window.location.href='portofolio.html'">PORTOFOLIO</div>
+    </div>
+      <div class="menu-item">
+    <div class="menu-item-title" onclick="window.location.href='tentang.html'">TENTANG</div>
+  </div>
+  <div id="menuUserSlot"></div>
+</div>
+<!-- ================= JS ================= -->
+<script src="js/global.js"></script>
+<script src="js/auth.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .then(() => console.log('Service Worker terdaftar'))
+      .catch((err) => console.log('SW gagal:', err));
+  }
+</script>
+</body>
+</html>
