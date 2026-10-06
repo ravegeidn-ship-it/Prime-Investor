@@ -1,0 +1,75 @@
+/* ============================================= */
+/* HARGA WAJAR — method card & kesimpulan        */
+/* ============================================= */
+.method-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  transition: box-shadow 0.2s;
+}
+.method-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+.method-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #2563eb;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+/* ============================================= */
+/* KESIMPULAN                                     */
+/* ============================================= */
+.conclusion-card {
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+  color: #fff;
+  border-radius: 14px;
+  padding: 24px;
+  margin-top: 28px;
+  box-shadow: 0 8px 24px rgba(37,99,235,0.25);
+}
+.conclusion-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.85;
+  margin-bottom: 16px;
+}
+.conclusion-range {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 6px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.5px;
+}
+.conclusion-mos {
+  font-size: 15px;
+  font-weight: 600;
+  opacity: 0.95;
+  margin-bottom: 18px;
+}
+.conclusion-status {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.status-undervalued { background: #10b981; color: #fff; }
+.status-fair { background: #f59e0b; color: #fff; }
+.status-overvalued { background: #ef4444; color: #fff; }
+.status-empty { background: rgba(255,255,255,0.2); color: #fff; }
+
+@media (max-width: 640px) {
+  .conclusion-range { font-size: 22px; }
+}
+
